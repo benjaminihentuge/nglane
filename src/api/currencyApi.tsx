@@ -11,14 +11,17 @@ interface CurrencyAndFlagData {
   flags: { png: string; svg: string };
 }
 
-// Function to get user country by IP
+// src/api/currencyApi.ts
+
+// Function to get user country by IP (using HTTPS)
 const getUserCountry = async (): Promise<UserCountryData> => {
-  const response = await fetch('http://ip-api.com/json/');
+  const response = await fetch('https://ip-api.com/json/');
   if (!response.ok) {
     throw new Error('Could not fetch country data');
   }
   return response.json();
 };
+
 
 // Function to get currency and flag by country code
 const getCurrencyAndFlagByCountryCode = async (
