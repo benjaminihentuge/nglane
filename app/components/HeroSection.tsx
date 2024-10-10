@@ -23,10 +23,10 @@ class HeroSection extends Component {
           <p className="mt-4">Find comfort and fashion in our latest collection</p> {/* Updated text */}
           <div className="mt-6 flex justify-center space-x-4">
             <button className="bg-blue-500 text-white px-10 py-2 rounded-md shadow-lg hover:bg-blue-700">
-              Explore Men
+              Shop Men
             </button> {/* Updated button styling */}
             <button className="bg-red-500 text-white px-10 py-2 rounded-md shadow-lg hover:bg-red-700">
-              Explore Women
+             Shop Women
             </button> {/* Updated button styling */}
           </div>
         </div>

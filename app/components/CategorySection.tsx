@@ -1,6 +1,5 @@
 "use client"; // Add this line at the top
-import Image from 'next/image'; // Import the Image component from Next.js
-import shirt from '../../assets/1st_shirt.jpg'; // Adjust the import if needed
+
 
 import React, { Component } from 'react';
 
@@ -16,13 +15,7 @@ class CategorySection extends Component {
         <h2 className="text-2xl font-semibold text-center text-black mb-8">Shop by Category</h2>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
           <div className="category bg-white p-4 shadow-md">
-          <Image
-          src={shirt}
-          alt="Clothes"
-          layout="fill"
-          objectFit="cover"
           
-        />
             <span>SHIRTS</span>
           </div>
           <div className="category bg-white p-4 shadow-md">
