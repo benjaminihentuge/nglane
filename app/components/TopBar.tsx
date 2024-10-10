@@ -15,11 +15,14 @@ const TopBar = () => {
         setFlagUrl(flagUrl);
       } catch (error) {
         console.error('Error fetching currency and flag:', error);
+        setCurrency('USD'); // Fallback currency
+        setFlagUrl('/path/to/default-flag.png'); // Fallback flag
       }
     };
-
+  
     getCurrencyAndFlag();
   }, []);
+  ;
 
   return (
     <div className="bg-black text-white p-2 text-sm flex justify-end items-center fixed top-0 left-0 right-0 z-30">
