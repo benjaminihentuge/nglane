@@ -15,7 +15,6 @@ class CategorySection extends Component {
         <h2 className="text-2xl font-semibold text-center text-black mb-8">Shop by Category</h2>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
           <div className="category bg-white p-4 shadow-md">
-          
             <span>SHIRTS</span>
           </div>
           <div className="category bg-white p-4 shadow-md">
