@@ -14,20 +14,20 @@ class HeroSection extends Component {
         <Image
           src={clothesImage}
           alt="Clothes"
-          layout="fill"
-          objectFit="cover"
+          fill // Updated from layout="fill"
+          style={{ objectFit: 'cover' }} // Updated from objectFit="cover"
           className="absolute inset-0 z-10" // Ensure the image stays behind the text
         />
         <div className="text-center relative z-20"> {/* Ensure text appears above the image */}
-          <h1 className="text-4xl font-bold tracking-widest">Your Cozy Era</h1>
-          <p className="mt-4">Get the best cozy fits with new arrivals</p>
+          <h1 className="text-4xl font-bold tracking-widest">Discover Cozy Styles</h1> {/* Updated text */}
+          <p className="mt-4">Find comfort and fashion in our latest collection</p> {/* Updated text */}
           <div className="mt-6 flex justify-center space-x-4">
-            <button className="bg-white text-black px-10 py-2 rounded-md shadow-lg hover:bg-gray-300">
-              Shop Men
-            </button>
-            <button className="bg-white text-black px-10 py-2 rounded-md shadow-lg hover:bg-gray-300">
-              Shop Women
-            </button>
+            <button className="bg-blue-500 text-white px-10 py-2 rounded-md shadow-lg hover:bg-blue-700">
+              Explore Men
+            </button> {/* Updated button styling */}
+            <button className="bg-red-500 text-white px-10 py-2 rounded-md shadow-lg hover:bg-red-700">
+              Explore Women
+            </button> {/* Updated button styling */}
           </div>
         </div>
       </section>
