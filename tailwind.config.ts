@@ -9,11 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
+        background: "var(--background)", // Using CSS custom properties
         foreground: "var(--foreground)",
+        offwhite: "F3F2ED", // Add your offwhite color
       },
     },
   },
   plugins: [],
 };
+
 export default config;

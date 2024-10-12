@@ -14,7 +14,7 @@ class HeroSection extends Component {
       <section className="relative bg-white bg-cover bg-center min-h-[100vh] w-full flex items-center justify-center text-white">
         <div className="relative w-full h-full flex">
           {/* Left Image - Always visible */}
-          <div className="relative w-full md:w-1/2 h-[100vh] md:h-[100vh]">
+          <div className="relative w-full md:w-1/2 h-[80vh] md:h-[100vh]">
             <Image
               src={leftImage}
               alt="Clothes left"
