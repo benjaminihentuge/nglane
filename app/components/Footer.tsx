@@ -16,9 +16,9 @@ const Footer = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 text-sm">
-
           {/* Account Section */}
           <div>
+            {/* Toggle button for small screens */}
             <button 
               className="w-full flex justify-between items-center font-bold mb-2 md:hidden" 
               onClick={() => setAccountOpen(!isAccountOpen)}
@@ -26,6 +26,8 @@ const Footer = () => {
               Account
               <span>{isAccountOpen ? '-' : '+'}</span>
             </button>
+            {/* Heading for large screens */}
+            <h4 className="font-bold mb-2 hidden md:block">Account</h4>
             <ul className={`md:block ${isAccountOpen ? 'block' : 'hidden'}`}>
               <li><a href="#" className="hover:underline">Log In</a></li>
               <li><a href="#" className="hover:underline">Sign Up</a></li>
@@ -35,6 +37,7 @@ const Footer = () => {
 
           {/* Company Section */}
           <div>
+            {/* Toggle button for small screens */}
             <button 
               className="w-full flex justify-between items-center font-bold mb-2 md:hidden" 
               onClick={() => setCompanyOpen(!isCompanyOpen)}
@@ -42,6 +45,8 @@ const Footer = () => {
               Company
               <span>{isCompanyOpen ? '-' : '+'}</span>
             </button>
+            {/* Heading for large screens */}
+            <h4 className="font-bold mb-2 hidden md:block">Company</h4>
             <ul className={`md:block ${isCompanyOpen ? 'block' : 'hidden'}`}>
               <li><a href="#" className="hover:underline">About</a></li>
               <li><a href="#" className="hover:underline">Environmental Initiatives</a></li>
@@ -53,6 +58,7 @@ const Footer = () => {
 
           {/* Get Help Section */}
           <div>
+            {/* Toggle button for small screens */}
             <button 
               className="w-full flex justify-between items-center font-bold mb-2 md:hidden" 
               onClick={() => setHelpOpen(!isHelpOpen)}
@@ -60,6 +66,8 @@ const Footer = () => {
               Get Help
               <span>{isHelpOpen ? '-' : '+'}</span>
             </button>
+            {/* Heading for large screens */}
+            <h4 className="font-bold mb-2 hidden md:block">Get Help</h4>
             <ul className={`md:block ${isHelpOpen ? 'block' : 'hidden'}`}>
               <li><a href="#" className="hover:underline">Help Center</a></li>
               <li><a href="#" className="hover:underline">Return Policy</a></li>
@@ -70,6 +78,7 @@ const Footer = () => {
 
           {/* Connect Section */}
           <div>
+            {/* Toggle button for small screens */}
             <button 
               className="w-full flex justify-between items-center font-bold mb-2 md:hidden" 
               onClick={() => setConnectOpen(!isConnectOpen)}
@@ -77,6 +86,8 @@ const Footer = () => {
               Connect
               <span>{isConnectOpen ? '-' : '+'}</span>
             </button>
+            {/* Heading for large screens */}
+            <h4 className="font-bold mb-2 hidden md:block">Connect</h4>
             <ul className={`md:block ${isConnectOpen ? 'block' : 'hidden'}`}>
               <li><a href="#" className="hover:underline">Facebook</a></li>
               <li><a href="#" className="hover:underline">Instagram</a></li>
@@ -117,6 +128,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;
