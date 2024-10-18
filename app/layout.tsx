@@ -1,14 +1,16 @@
-// app/layout.tsx
 "use client"; // Add this line at the top
 
 import React from 'react';
-import TopBar from './components/TopBar';  // Import TopBar component
-import Navbar from './components/Navbar';  // Import Navbar component
-import CategoryLinks from './components/CategoryLinks';  // Import CategoryLinks component
-
+import TopBar from './components/TopBar';  
+import Navbar from './components/Navbar';  
+import CategoryLinks from './components/CategoryLinks';  
 import Footer from './components/Footer';
 
-const Layout = ({ children }) => {
+interface LayoutProps {
+  children: React.ReactNode; // Define the type of children
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   console.log("Layout Rendered");
   return (
     <html lang="en">
@@ -20,7 +22,7 @@ const Layout = ({ children }) => {
         <Footer />
       </body>
     </html>
-    );
+  );
 };
 
 export default Layout;

@@ -90,7 +90,7 @@ const Footer = () => {
             <h4 className="font-bold mb-2 hidden md:block">Connect</h4>
             <ul className={`md:block ${isConnectOpen ? 'block' : 'hidden'}`}>
               <li><a href="#" className="hover:underline">Facebook</a></li>
-              <li><a href="#" className="hover:underline">Instagram</a></li>
+              <li><a href="" className="hover:underline">Instagram</a></li>
               <li><a href="#" className="hover:underline">Twitter</a></li>
               <li><a href="#" className="hover:underline">Our Stores</a></li>
             </ul>

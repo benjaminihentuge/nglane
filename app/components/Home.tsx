@@ -7,12 +7,22 @@ import CategorySection from './CategorySection';
 
 
 
+
+
+
+
 const Home = () => {
   console.log("Home Component Rendered");
   return (
     <>
       <HeroSection />
       <CategorySection />
+      
+
+      
+      
+
+
     
     </>
   );
