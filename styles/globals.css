@@ -25,3 +25,18 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Add this CSS to your global styles or a specific CSS module */
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease forwards; /* Control the duration and easing */
+}

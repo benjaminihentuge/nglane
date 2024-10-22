@@ -5,6 +5,7 @@ import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';  
 import CategoryLinks from './components/CategoryLinks';  
 import Footer from './components/Footer';
+import '../styles/globals.css';
 
 interface LayoutProps {
   children: React.ReactNode; // Define the type of children

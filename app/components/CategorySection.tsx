@@ -3,26 +3,14 @@
 import Image from "next/image";
 import Link from "next/link"; // Use Next.js Link for internal navigation
 import React from "react";
+import { StaticImageData } from 'next/image'; // Importing StaticImageData
 
-// Import your images
-import Shirt from '../../assets/1st_shirt.jpg';
-import Kaftan from '../../assets/kaftan2.jpg';
-import Twopiece from '../../assets/vintage2piece.jpg';
-import Pants from '../../assets/pants.jpg';
-import Dress from '../../assets/dress.jpg';
-import Asoebe from '../../assets/linenTwoPiece1.jpg';
+// Define the props for the category section
+type CategorySectionProps = {
+  categories: { name: string; imgSrc: StaticImageData; link: string }[];
+};
 
-// Define categories with images and links
-const categories = [
-  { name: "SHIRTS", imgSrc: Shirt, link: "/shop/shirts" },
-  { name: "KAFTAN", imgSrc: Kaftan, link: "/shop/kaftan" },
-  { name: "2 PIECE", imgSrc: Twopiece, link: "/shop/2piece" },
-  { name: "PANTS", imgSrc: Pants, link: "/shop/pants" },
-  { name: "DRESS", imgSrc: Dress, link: "/shop/dress" },
-  { name: "ASOEBE", imgSrc: Asoebe, link: "/shop/asoebe" },
-];
-
-const CategorySection: React.FC = () => {
+const CategorySection: React.FC<CategorySectionProps> = ({ categories }) => {
   return (
     <section className="py-12 bg-gray-100 border-b border-gray-500">
       <h2 className="text-2xl font-semibold text-center text-black mb-8">

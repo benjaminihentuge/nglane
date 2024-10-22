@@ -34,7 +34,7 @@ const Navbar = () => {
         {/* Navigation Links - Visible on larger screens */}
         <ul className="hidden sm:flex space-x-4">
           <li><a href="/women" className="hover:underline">Women</a></li>
-          <li><a href="/men" className="hover:underline">Men</a></li>
+          <li><a href="/" className="hover:underline">Men</a></li> {/* Updated to link to home */}
           <li><a href="/about" className="hover:underline">About</a></li>
         </ul>
 
@@ -58,7 +58,7 @@ const Navbar = () => {
           {/* Men and Women Links */}
           <ul className="space-y-2">
             <li><a href="/women" className="hover:underline">Women</a></li>
-            <li><a href="/men" className="hover:underline">Men</a></li>
+            <li><a href="/" className="hover:underline">Men</a></li> {/* Updated to link to home */}
           </ul>
 
           {/* Category Links */}
