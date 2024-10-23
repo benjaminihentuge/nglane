@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
           <MagnifyingGlassIcon className="h-5 w-5 text-gray-700 hover:text-gray-900 cursor-pointer" />
           <UserIcon className="hidden sm:block h-5 w-5 text-gray-700 hover:text-gray-900 cursor-pointer" />
           <ShoppingCartIcon className="h-5 w-5 text-gray-700 hover:text-gray-900 cursor-pointer" onClick={toggleCart} />
-          <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs h-5 w-5 flex items-center justify-center">{cart.length}</span>
+          <span className="absolute top-1 right-1 bg-red-500 text-white rounded-full text-xs h-4 w-4 flex items-center justify-center">{cart.length}</span>
         </div>
 
         {isCartOpen && <CartSidebar onClose={toggleCart} />}
