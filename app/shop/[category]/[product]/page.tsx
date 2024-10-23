@@ -3,7 +3,7 @@ import ProductImageGallery from "../../../components/ProductImageGallery";
 import ProductDetails from "../../../components/ProductDetails";
 import ProductReviews from "../../../components/ProductReviews";
 import { products } from "../../../../data/products"; // Adjust the import path as necessary
-import { useCart } from "../../../components/CartContext"; // Import useCart
+
 interface Review {
   name: string;
   rating: number;

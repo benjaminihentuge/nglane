@@ -9,7 +9,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 import CartSidebar from './CartSidebar'; // Import cart sidebar component
-import { useCart, CartProvider } from './CartContext';
+import { useCart, } from './CartContext';
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
