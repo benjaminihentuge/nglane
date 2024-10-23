@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link"; // Import Link from Next.js
 
 interface Product {
   id: number;
@@ -9,6 +10,7 @@ interface Product {
   salePrice: number | null; // Allow salePrice to be null
   image: string;
   colors: string[]; // New property for available colors
+  category: string; // Added category for building the link
 }
 
 interface ProductCardProps {
@@ -18,14 +20,17 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="flex flex-col items-center mb-4">
-      {/* Image displayed inside the card container */}
-      <div className=" p-1 shadow-sm w-full mb-2">
+      {/* Link to product details page */}
+      <Link
+        href={`/shop/${product.category}/${product.name.replace(/\s+/g, '-').toLowerCase()}`}
+        className="p-1 shadow-sm w-full mb-2"
+      >
         <img
           src={product.image}
           alt={product.name}
           className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
         />
-      </div>
+      </Link>
 
       {/* Product details outside of the card container */}
       <div className="text-center">

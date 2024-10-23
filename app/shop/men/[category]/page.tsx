@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import FilterSidebar from "../../../components/FilterSidebar"; // Import the FilterSidebar
 import { useParams, useRouter } from "next/navigation"; // Import useRouter for redirection
 import ProductGrid from "../../../components/ProductGrid"; // Adjust the path if necessary
-
+import { useCart } from "../../../components/CartContext"; // Import useCart
 const CategoryPage: React.FC = () => {
   const params = useParams(); // Access dynamic route params
   const router = useRouter(); // For redirection
