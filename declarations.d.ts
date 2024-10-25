@@ -33,3 +33,23 @@ declare module '*.jpg' {
     export default value;
   }
   
+  declare module 'react-paystack' {
+    import * as React from 'react';
+  
+    interface PaystackButtonProps {
+      email: string;
+      amount: number;
+      publicKey: string;
+      onSuccess: (reference: any) => void;
+      onClose?: () => void;
+      text?: string;
+      className?: string;
+      currency?: string;
+      channels?: string[];
+      metadata?: Record<string, any>;
+      reference?: string;
+    }
+  
+    export const PaystackButton: React.FC<PaystackButtonProps>;
+  }
+  
