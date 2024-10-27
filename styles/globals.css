@@ -40,3 +40,17 @@ body {
 .animate-slide-up {
   animation: slide-up 0.3s ease forwards; /* Control the duration and easing */
 }
+
+
+/* Add this CSS to your styles */
+.cart-sidebar {
+  transition: transform 0.3s ease;
+}
+
+.cart-sidebar.hidden {
+  transform: translateX(100%); /* Slide out to the right */
+}
+
+.cart-sidebar.visible {
+  transform: translateX(0); /* Slide in */
+}

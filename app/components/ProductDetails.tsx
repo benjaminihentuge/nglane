@@ -1,3 +1,5 @@
+// ProductDetails.tsx
+
 "use client";
 
 import React, { useState } from "react";
@@ -24,19 +26,19 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const { addToCart } = useCart();
-  const [isCartOpen, setIsCartOpen] = useState(false); // State for cart sidebar visibility
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const toggleCart = () => setIsCartOpen(!isCartOpen); // Function to toggle cart visibility
+  const toggleCart = () => setIsCartOpen(!isCartOpen);
 
   const handleAddToCart = () => {
     addToCart({
-      id: name.toLowerCase().replace(/\s+/g, '-'), // Unique ID based on name
+      id: name.toLowerCase().replace(/\s+/g, '-'),
       name,
       price: salePrice ?? price,
       image: '', // Replace with actual image if available
       quantity: 1,
     });
-    toggleCart(); // Open cart sidebar after adding item
+    toggleCart();
   };
 
   return (
@@ -45,7 +47,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
 
       {/* Price Display Logic */}
       <div className="text-xl">
-        {salePrice !== null ? (
+        {salePrice !== null && salePrice < price ? (
           <>
             <span className="line-through text-gray-500 font-semibold">
               {`$${price.toFixed(2)}`}
@@ -99,12 +101,12 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
       {/* Add to Cart */}
       <button
         className="bg-gray-700 hover:bg-gray-800 w-full text-white font-bold py-2 px-4 rounded mt-4"
-        onClick={handleAddToCart} // Call handleAddToCart on click
+        onClick={handleAddToCart}
       >
         Add to Cart
       </button>
 
-      {isCartOpen && <CartSidebar onClose={toggleCart} />} {/* Cart sidebar */}
+      {isCartOpen && <CartSidebar onClose={toggleCart} />}
     </div>
   );
 };

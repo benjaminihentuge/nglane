@@ -2,14 +2,18 @@
 import { useState } from 'react';
 import { PaystackButton } from 'react-paystack';
 import CartSidebar from '../components/CartSidebar';
-import { useCart } from '../components/CartContext';
+
 
 interface ShippingInfo {
   name: string;
   address: string;
   postalCode: string;
 }
-
+interface PaystackReference {
+  reference: string;
+  status: string;
+  message: string;
+}
 const CheckoutPage: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [shippingInfo, setShippingInfo] = useState<ShippingInfo>({
@@ -19,7 +23,7 @@ const CheckoutPage: React.FC = () => {
   });
   const [isCartOpen, setIsCartOpen] = useState(false); // State to manage cart visibility
 
-  const publicKey = 'your-paystack-public-key';
+  const publicKey = 'pk_test_3482cbb9d63533fa361d8717a083573650d77510';
   const amount = 14935248; // Total amount in kobo for Paystack
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -27,19 +31,19 @@ const CheckoutPage: React.FC = () => {
     setShippingInfo((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handlePaymentSuccess = (reference: Record<string, any>): void => {
+  const handlePaymentSuccess = (reference: PaystackReference): void => {
     console.log('Payment successful!', reference);
-    alert('Payment successful! Thank you for your purchase.');
+    alert(`Payment successful! Thank you for your purchase. Reference: ${reference.reference}`);
   };
 
   return (
-    <div className="container mt-44 min-h-screen flex ">
+    <div className="container mt-32 min-h-screen flex text-black bg-slate-200">
       {/* Left side: checkout steps */}
       <div className="w-3/5 p-8 " >
         <h1 className="text-2xl font-bold mb-4">Checkout</h1>
         <div className="space-y-8">
           {/* Step 1: Email Entry */}
-          <div className="bg-gray-100 p-6 rounded-lg">
+          <div className="bg-gray-100 p-6  rounded-lg">
             <h2 className="text-lg font-semibold">1. Enter Your Email</h2>
             <input
               type="email"

@@ -1,8 +1,10 @@
+// ProductPage.tsx
+
 import React from "react";
 import ProductImageGallery from "../../../components/ProductImageGallery";
 import ProductDetails from "../../../components/ProductDetails";
 import ProductReviews from "../../../components/ProductReviews";
-import { products } from "../../../../data/products"; // Adjust the import path as necessary
+import { products } from "../../../../data/products"; // Adjust the path as necessary
 
 interface Review {
   name: string;
@@ -26,9 +28,14 @@ interface ProductPageProps {
   };
 }
 
-const fetchProductData = (category: string, productName: string): Product | undefined => {
+const fetchProductData = (
+  category: string,
+  productName: string
+): Product | undefined => {
   const product = products.find(
-    (p) => p.category === category && p.name.toLowerCase().replace(/\s+/g, '-') === productName
+    (p) => 
+      p.category === category && 
+      p.name.toLowerCase().replace(/\s+/g, '-') === productName
   );
 
   if (product) {
@@ -44,7 +51,7 @@ const fetchProductData = (category: string, productName: string): Product | unde
   return undefined;
 };
 
-const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
+const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
   const { category, product } = params;
   const productData = fetchProductData(category, product);
 
@@ -60,18 +67,15 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
 
   return (
     <div className="w-full min-h-screen bg-slate-100 flex flex-col items-center">
-      {/* Container for Large Screens */}
+      {/* Large Screen Container */}
       <div className="hidden md:grid md:grid-cols-3 gap-8 max-w-7xl w-full px-4 py-10">
-        {/* Product Image Gallery for Large Screens */}
         <div className="md:col-span-2">
           <ProductImageGallery images={productData.images} />
         </div>
-
-        {/* Product Details Section for Large Screens */}
         <div className="bg-slate-100 p-6 flex flex-col justify-between">
           <ProductDetails
             name={productData.name}
-            price={productData.salePrice ?? productData.price}
+            price={productData.price}
             salePrice={productData.salePrice}
             description={`A stylish ${productData.name} made for every occasion.`}
             colors={productData.colors}
@@ -80,20 +84,15 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
         </div>
       </div>
 
-      {/* Container for Small Screens */}
+      {/* Small Screen Container */}
       <div className="md:hidden w-full px-4 py-10 flex flex-col items-center">
-
-        {/* Product Image Gallery for Small Screens */}
-        
-        <div className="w-full ">
+        <div className="w-full">
           <ProductImageGallery images={productData.images} />
         </div>
-
-        {/* Product Details Section for Small Screens */}
         <div className="bg-slate-100 w-full p-4 mt-1 flex flex-col justify-between">
           <ProductDetails
             name={productData.name}
-            price={productData.salePrice ?? productData.price}
+            price={productData.price}
             salePrice={productData.salePrice}
             description={`A stylish ${productData.name} made for every occasion.`}
             colors={productData.colors}
@@ -102,7 +101,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
         </div>
       </div>
 
-      {/* Reviews Section (Same for Both) */}
+      {/* Reviews Section */}
       <div className="max-w-7xl w-full mt-10 px-4">
         <ProductReviews reviews={productData.reviews} />
       </div>

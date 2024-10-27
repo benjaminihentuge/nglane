@@ -1,5 +1,4 @@
-// components/CartContext.tsx
-"use client"; // React client-side code
+"use client";
 
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 
@@ -17,7 +16,10 @@ interface CartContextType {
   cart: Product[];
   addToCart: (product: Product) => void;
   removeFromCart: (id: string) => void;
+  updateQuantity: (id: string, newQuantity: number) => void;
   clearCart: () => void;
+  setCart: React.Dispatch<React.SetStateAction<Product[]>>;
+  totalItemCount: number; // Add totalItemCount to context
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -32,16 +34,14 @@ export const useCart = () => {
 // Cart Provider Component
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<Product[]>(() => {
-    // Load the cart from localStorage when initializing, only if in the browser
     if (typeof window !== "undefined") {
       const storedCart = localStorage.getItem('cart');
       return storedCart ? JSON.parse(storedCart) : [];
     }
-    return []; // Default to empty array if on server
+    return [];
   });
 
   useEffect(() => {
-    // Save cart to localStorage whenever it changes, only if in the browser
     if (typeof window !== "undefined") {
       localStorage.setItem('cart', JSON.stringify(cart));
     }
@@ -63,10 +63,21 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
+  const updateQuantity = (id: string, newQuantity: number) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity: Math.max(newQuantity, 1) } : item
+      )
+    );
+  };
+
   const clearCart = () => setCart([]);
 
+  // Calculate the total item count
+  const totalItemCount = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, setCart, totalItemCount }}>
       {children}
     </CartContext.Provider>
   );

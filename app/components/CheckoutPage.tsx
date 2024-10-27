@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { PaystackButton } from 'react-paystack';
 import CartSidebar from '../components/CartSidebar';
-import { useCart } from '../components/CartContext';
+
 
 interface ShippingInfo {
   name: string;
@@ -18,7 +18,7 @@ const CheckoutPage: React.FC = () => {
   });
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const publicKey = 'your-paystack-public-key';
+  const publicKey = 'pk_test_3482cbb9d63533fa361d8717a083573650d77510';
   const amount = 14935248; // Total amount in kobo for Paystack
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
