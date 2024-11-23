@@ -1,9 +1,17 @@
 "use client";
 
-import React, { useEffect, useRef, Suspense } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "./CartContext";
 import { TrashIcon, PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
+
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  quantity: number;
+}
 
 interface CartSidebarProps {
   onClose: () => void;
@@ -13,6 +21,7 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ onClose }) => {
   const { cart, removeFromCart, clearCart, updateQuantity } = useCart();
   const router = useRouter();
   const sidebarRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState(true); // State to manage loading
 
   // Calculate subtotal
   const subtotal = cart.reduce(
@@ -50,20 +59,29 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ onClose }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
 
-  // Render loading state while cart data is being prepared
-  if (!cart) return <div>Loading...</div>;
+  // Load state handling
+  useEffect(() => {
+    if (cart) {
+      setLoading(false);
+    }
+  }, [cart]);
+
+  // Render loading state
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div
       ref={sidebarRef}
       className="fixed top-0 right-0 w-[400px] h-screen bg-white shadow-lg z-50 flex flex-col"
+      role="dialog"
+      aria-modal="true"
     >
       <div className="p-6 border-b flex items-center justify-between">
         <h2 className="text-xl font-semibold">Your Cart</h2>
         <button
           onClick={onClose}
           className="text-gray-500 hover:text-gray-800"
-          aria-label="Close cart"
+          aria-label="Close cart sidebar"
         >
           Close
         </button>
@@ -74,47 +92,52 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ onClose }) => {
           <p>Your cart is empty.</p>
         ) : (
           <ul className="space-y-4">
-            {cart.map((item) => (
-              <li key={item.id} className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-16 h-16 object-cover mr-2"
-                    onError={(e) => (e.currentTarget.src = "/assets/shein1.jpg")}
-                  />
-                  <div>
-                    <p className="font-medium">{item.name}</p>
-                    <p className="text-gray-600">${item.price.toFixed(2)}</p>
-                    <div className="flex items-center space-x-2 mt-2">
-                      <button
-                        onClick={() =>
-                          updateQuantity(item.id, item.quantity - 1)
-                        }
-                        className="p-1 border rounded-full hover:bg-gray-200"
-                        aria-label="Decrease quantity"
-                        disabled={item.quantity <= 1}
-                      >
-                        <MinusIcon className="w-4 h-4 text-gray-700" />
-                      </button>
-                      <span className="text-lg">{item.quantity}</span>
-                      <button
-                        onClick={() =>
-                          updateQuantity(item.id, item.quantity + 1)
-                        }
-                        className="p-1 border rounded-full hover:bg-gray-200"
-                        aria-label="Increase quantity"
-                      >
-                        <PlusIcon className="w-4 h-4 text-gray-700" />
-                      </button>
+            {cart.map((item) => {
+              console.log('Rendering item:', item); // Debugging log
+              return (
+                <li key={item.id} className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-16 h-16 object-cover mr-2"
+                    />
+                    <div>
+                      <p className="font-medium">{item.name}</p>
+                      <p className="text-gray-600">${item.price.toFixed(2)}</p>
+                      <div className="flex items-center space-x-2 mt-2">
+                        <button
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity - 1)
+                          }
+                          className="p-1 border rounded-full hover:bg-gray-200"
+                          aria-label="Decrease quantity"
+                          disabled={item.quantity <= 1}
+                        >
+                          <MinusIcon className="w-4 h-4 text-gray-700" />
+                        </button>
+                        <span className="text-lg">{item.quantity}</span>
+                        <button
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity + 1)
+                          }
+                          className="p-1 border rounded-full hover:bg-gray-200"
+                          aria-label="Increase quantity"
+                        >
+                          <PlusIcon className="w-4 h-4 text-gray-700" />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <button onClick={() => removeFromCart(item.id)} aria-label="Remove item">
-                  <TrashIcon className="w-5 h-5 text-red-500 hover:text-red-700" />
-                </button>
-              </li>
-            ))}
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    aria-label="Remove item"
+                  >
+                    <TrashIcon className="w-5 h-5 text-red-500 hover:text-red-700" />
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>

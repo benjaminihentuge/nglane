@@ -4,7 +4,7 @@ import React from "react";
 import ProductImageGallery from "../../../components/ProductImageGallery";
 import ProductDetails from "../../../components/ProductDetails";
 import ProductReviews from "../../../components/ProductReviews";
-import { products } from "../../../../data/products"; // Adjust the path as necessary
+import { products } from "../../../../data/products"; // Adjust the import path as necessary
 
 interface Review {
   name: string;

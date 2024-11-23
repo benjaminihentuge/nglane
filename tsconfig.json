@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/api/currencyApi.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/api/currencyApi.ts", "lib/mongodb.mjs", "seed.mts", "seed.mts", "data/products.ts", "data/types.mjs", "data/seed.mjs"],
   "exclude": ["node_modules"]
 }
